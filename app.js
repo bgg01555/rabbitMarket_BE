@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
   res.send("Hello World")
 })
 
-ㅁ
+//app.use("/api");
 app.listen(port, () => {
   console.log("running on port", port)
 })
