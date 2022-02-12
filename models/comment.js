@@ -1,37 +1,33 @@
 const mongoose = require("mongoose")
 
-const commentsSchema = new mongoose.Schema({
-  //   commentId: {
-  //     type: String,
-  //     unique: true,
-  //     required: true,
-  //   },
-  comment: {
-    type: String,
-    required: true,
+const commentsSchema = new mongoose.Schema(
+  {
+    comment: {
+      type: String,
+      required: true,
+    },
+    nickname: {
+      type: String,
+      required: true,
+    },
+    postId: {
+      type: String,
+      required: true,
+    },
+    userId: {
+      type: String,
+      required: true,
+    },
   },
-  nickname: {
-    type: String,
-    required: true,
-  },
-  postId: {
-    type: String,
-    required: true,
-  },
-  userId: {
-    type: String,
-    required: true,
-  }
-},
   { timestamps: true } // createdAt, updatedAt 으로 Date형 객체 입력
 )
 
-commentsSchema.virtual('commentId').get(function () {
-  return this._id.toHexString();
-});
-commentsSchema.set('toJSON', {
+commentsSchema.virtual("commentId").get(function () {
+  return this._id.toHexString()
+})
+commentsSchema.set("toJSON", {
   virtuals: true,
-});
+})
 
 const Comments = mongoose.model("Comments", commentsSchema)
 module.exports = Comments

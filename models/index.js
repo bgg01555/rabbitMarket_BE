@@ -10,4 +10,19 @@ const connect = () => {
       console.error(err)
     })
 }
+
+// const connect = () => {
+//   mongoose.connect(
+//     "mongodb://localhost:27017/rabbitmarket11",
+//     { ignoreUndefined: true },
+//     (error) => {
+//       if (error) {
+//         console.log("mongodb error", error)
+//       } else {
+//         console.log("connected")
+//       }
+//     }
+//   )
+// }
+
 module.exports = connect

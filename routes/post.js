@@ -16,43 +16,45 @@ router.get("/posts", async (req, res) => {
     //     posts[i].comments_cnt = comments_cnt;
     // }
 
-    res.json({ ok: true, posts });
+    res.json({ ok: true, posts })
 })
 
 //상세 상품 조회
 router.get("/posts/:postId", async function (req, res) {
-    const { postId } = req.params;
+    const { postId } = req.params
 
     Post.findById(postId, async function (err, post) {
         if (!err) {
-            let comments = await Comment.find({ postId: postId });
-            res.json({ ok: true, post, comments });
+            let comments = await Comment.find({ postId: postId })
+            res.json({ ok: true, post, comments })
         } else {
-            res.json({ ok: false, post: {}, comments: {} });
+            res.json({ ok: false, post: {}, comments: {} })
         }
-    });
-});
-
+    })
+})
 
 //판매 상품 등록
 router.post("/posts", authMiddleware, async function (req, res) {
-    const { title, price, imgurl, content } = req.body;
-    let { user } = res.locals;
+    const { title, price, imgurl, content } = req.body
+    let { user } = res.locals
 
     //price number? string? 자동 변환 되는지
 
-    if (title != '' && content != '' && price != '' && imgurl != '') {
+    if (title != "" && content != "" && price != "" && imgurl != "") {
         await Post.create({
-            title, content, price, imgurl, isSold: false,
-            userId: user.userId, nickname: user.nickname
-        });
-        return res.json({ ok: true, result: '판매 상품이 등록되었습니다.' });
+            title,
+            content,
+            price,
+            imgurl,
+            isSold: false,
+            userId: user.userId,
+            nickname: user.nickname,
+        })
+        return res.json({ ok: true, result: "판매 상품이 등록되었습니다." })
+    } else {
+        return res.json({ ok: false, result: "올바른 입력이 아닙니다." })
     }
-    else {
-        return res.json({ ok: false, result: '올바른 입력이 아닙니다.' });
-    }
-
-});
+})
 
 //판매 상품 수정
 router.put("/posts", authMiddleware, async function (req, res) {
