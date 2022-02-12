@@ -5,10 +5,17 @@ const app = express()
 const cors = require("cors")
 connect()
 
+const userRouter = require("./routes/user")
+
 //body 읽기
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cors())
+app.use(requestMiddleware);
+
+// app.use("/api", [goodsRouter, cartsRouter]);
+// 여러 라우터를 사용할 경우 배열 형태로 배치
+app.use("/api", [userRouter]);
 
 app.get("/", (req, res) => {
   res.send("Hello World")

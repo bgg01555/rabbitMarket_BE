@@ -17,9 +17,10 @@ const commentsSchema = new mongoose.Schema({
   postId: {
     type: String,
     required: true,
-  },
-  timestamps: true, // createdAt, updatedAt 으로 Date형 객체 입력
-})
+  }
+},
+  {timestamps: true} // createdAt, updatedAt 으로 Date형 객체 입력
+)
 
 commentsSchema.virtual('commentId').get(function () {
     return this._id.toHexString();
