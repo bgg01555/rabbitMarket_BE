@@ -25,15 +25,15 @@ const PostSchema = new mongoose.Schema({
   nickname: {
     type: String,
     required: true,
-  },
-
+  }
+},
   // date: {
   //     type: String,
   //     required: true,
   // },
 
-  // createdAt, updatedAt 으로 Date형 객체 입력
-}, { timestamps: true, })
+  { timestamps: true } // createdAt, updatedAt 으로 Date형 객체 입력
+)
 
 PostSchema.virtual("postId").get(function () {
   return this._id.toHexString()

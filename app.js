@@ -5,9 +5,15 @@ const port = 3000
 const app = express()
 connect()
 
+const userRouter = require("./routes/user")
+
 //body 읽기
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+
+
+app.use(cors())
+app.use("/api", [userRouter]);
 
 
 const postRouter = require("./routes/post");
