@@ -1,10 +1,9 @@
-const express = require("express");
-const Users = require("../models/user");
-const jwt = require('jsonwebtoken');
-const Joi = require('joi');
-const authMiddleware = require('../middlewares/auth-middleware');
-const router = express.Router();
-
+const express = require("express")
+const Users = require("../models/user")
+const jwt = require("jsonwebtoken")
+const Joi = require("joi")
+const authMiddleware = require("../middlewares/auth-middleware")
+const router = express.Router()
 
 /**
  * 회원가입 API.
@@ -112,7 +111,6 @@ router.post("/login", async (req, res) => {
   try {
     const { loginId, password } = await postLoginSchema.validateAsync(req.body)
 
-<<<<<<< HEAD
     const user = await Users.findOne({ userId: loginId, password }).exec()
     if (!user) {
       // request의 loginId, password 내용으로 일치하는 유저가 없는 경우
@@ -121,33 +119,12 @@ router.post("/login", async (req, res) => {
         result: "닉네임 또는 패스워드를 확인해주세요.",
       })
       return
-=======
-        const user = await Users.findOne({ userId:loginId, password }).exec();
-        if (!user) { // request의 loginId, password 내용으로 일치하는 유저가 없는 경우
-            res.send({
-                ok:false,
-                result: '닉네임 또는 패스워드를 확인해주세요.',
-            });
-            return;
-        }
-        const token = jwt.sign({ userId: user.userId }, 'MY-SECRET-KEY'); // 토큰을 서버쪽에서 sign 하여 생성
-        res.send({
-            token, // 토큰 전달
-        });
-    } catch (err) {
-        res.send({
-            ok:false,
-            result: '닉네임 또는 패스워드를 확인해주세요2.',
-        });
->>>>>>> 94a17619e19faaf834b96a3ac26910cb758f5bd2
     }
     const token = jwt.sign({ userId: user.userId }, "MY-SECRET-KEY") // 토큰을 서버쪽에서 sign 하여 생성
-    console.log(token)
     res.send({
       token, // 토큰 전달
     })
   } catch (err) {
-    //
     res.send({
       ok: false,
       result: "닉네임 또는 패스워드를 확인해주세요2.",
