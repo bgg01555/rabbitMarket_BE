@@ -11,8 +11,9 @@ module.exports = (req, res, next) => {
   // 프론트단에서 로그인이 필요한 페이지의 경우, headers를 아래와 같이 붙여서 접근함.
   // headers: { authorization: `Bearer ${localStorage.getItem('token')}`, },
   if (tokenType !== "Bearer") {
-    res.status(401).send({
-      errorMessage: "로그인이 필요한 페이지 입니다.",
+    res.send({
+      ok: false,
+      result: "로그인이 필요한 페이지 입니다.",
     })
     return
   }
