@@ -11,7 +11,6 @@ const userRouter = require("./routes/user")
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cors())
-app.use(requestMiddleware);
 
 // app.use("/api", [goodsRouter, cartsRouter]);
 // 여러 라우터를 사용할 경우 배열 형태로 배치
