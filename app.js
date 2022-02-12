@@ -1,6 +1,7 @@
 const express = require("express")
 const connect = require("./models")
 const user = require('./models/user')
+const cors = require("cors")
 const port = 3000
 const app = express()
 connect()
@@ -13,7 +14,7 @@ app.use(express.urlencoded({ extended: true }))
 
 
 app.use(cors())
-app.use("/api", [userRouter]);
+//app.use("/api", [userRouter]);
 
 
 const postRouter = require("./routes/post");

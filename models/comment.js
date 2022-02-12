@@ -17,6 +17,10 @@ const commentsSchema = new mongoose.Schema({
   postId: {
     type: String,
     required: true,
+  },
+  userId: {
+    type: String,
+    required: true,
   }
 },
   { timestamps: true } // createdAt, updatedAt 으로 Date형 객체 입력

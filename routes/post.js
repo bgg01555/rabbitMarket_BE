@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Post = require("../models/post");
 const Comment = require("../models/comment");
+const authMiddleware = require('../middlewares/auth-middleware');
 
 
 //전체 상품 조회
@@ -34,36 +35,66 @@ router.get("/posts/:postId", async function (req, res) {
 });
 
 
-//상세 상품 등록
-router.post("/posts", function (req, res) {
-    const { token, title, price, image_url, content } = req.body;
+//판매 상품 등록
+router.post("/posts", authMiddleware, async function (req, res) {
+    const { title, price, imgurl, content } = req.body;
+    let { user } = res.locals;
 
-
-    //비로그인 전체조회 맞고
-    //닉네임도 중복체크 해야되는데..
-    //닉네임은 중복체크 어떻게??
-
-    //게시글 작성
     //price number? string? 자동 변환 되는지
-    if (title != '' && contents != '' && price != '' && image_url != '') {
-        await Post.create({ title, content, price, image_url });
-        return res.json({ ok: false, msg: '작성 완료' });
+
+    if (title != '' && content != '' && price != '' && imgurl != '') {
+        await Post.create({
+            title, content, price, imgurl, isSold: false,
+            userId: user.userId, nickname: user.nickname
+        });
+        return res.json({ ok: true, result: '판매 상품이 등록되었습니다.' });
     }
     else {
-        return res.status(400).json({ success: false, msg: '빈칸 없이 입력하세요' });
+        return res.json({ ok: false, result: '올바른 입력이 아닙니다.' });
     }
 
-
-
-    Post.findById(postId, async function (err, post) {
-        if (!err) {
-            let comments = await Comment.find({ postId: postId });
-            res.json({ ok: true, post, comments });
-        } else {
-            res.json({ ok: false, post: {}, comments: {} });
-        }
-    });
 });
+
+//판매 상품 수정
+router.post("/posts", authMiddleware, async function (req, res) {
+    const { title, price, imgurl, content } = req.body;
+    let { user } = res.locals;
+
+    //price number? string? 자동 변환 되는지
+
+    if (title != '' && content != '' && price != '' && imgurl != '') {
+        await Post.updateOne({}, {
+            title, content, price, imgurl, isSold: false,
+            userId: user.userId, nickname: user.nickname
+        });
+        return res.json({ ok: true, result: '판매 상품이 등록되었습니다.' });
+    }
+    else {
+        return res.json({ ok: false, result: '올바른 입력이 아닙니다.' });
+    }
+
+});
+
+// //판매 상품 등록
+// router.post("/posts", authMiddleware, function (req, res) {
+//     const { title, price, imgurl, content } = req.body;
+//     let { user } = res.locals;
+
+//     //price number? string? 자동 변환 되는지
+
+//     if (title != '' && content != '' && price != '' && imgurl != '') {
+//         await Post.create({
+//             title, content, price, imgurl, isSold: false,
+//             userId: user.userId, nickname: user.nickname
+//         });
+//         return res.json({ ok: true, result: '판매 상품이 등록되었습니다.' });
+//     }
+//     else {
+//         return res.json({ ok: false, result: '올바른 입력이 아닙니다.' });
+//     }
+
+// });
+
 
 
 module.exports = router;

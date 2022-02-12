@@ -25,6 +25,10 @@ const PostSchema = new mongoose.Schema({
   nickname: {
     type: String,
     required: true,
+  },
+  userId: {
+    type: String,
+    required: true,
   }
 },
   // date: {
