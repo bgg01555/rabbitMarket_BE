@@ -32,8 +32,8 @@ const PostSchema = new mongoose.Schema({
   //     required: true,
   // },
 
-  timestamps: true, // createdAt, updatedAt 으로 Date형 객체 입력
-})
+  // createdAt, updatedAt 으로 Date형 객체 입력
+}, { timestamps: true, })
 
 PostSchema.virtual("postId").get(function () {
   return this._id.toHexString()

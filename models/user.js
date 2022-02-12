@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  timestamps: true, // createdAt, updatedAt 으로 Date형 객체 입력
-})
+  // createdAt, updatedAt 으로 Date형 객체 입력
+}, { timestamps: true, })
 
 module.exports = mongoose.model("Users", userSchema)
