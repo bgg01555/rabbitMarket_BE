@@ -6,6 +6,7 @@ const port = 3000
 const app = express()
 const commentsRouter = require("./routes/comment")
 const postRouter = require("./routes/post")
+const userRouter = require("./routes/user")
 connect()
 
 //body 읽기
@@ -15,7 +16,8 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 
 // 여러 라우터를 사용할 경우 배열 형태로 배치
-app.use("/api", [postRouter, commentsRouter] /* [goodRouter,userRouter] 이런식으로 쓸수도*/)
+app.use("/api", [postRouter, commentsRouter, userRouter] /* [goodRouter,userRouter] 이런식으로 쓸수도*/)
+
 
 app.get("/", async (req, res) => {
   //await user.create({ userId: 'test', password: 'test', nickname: 'test' });
