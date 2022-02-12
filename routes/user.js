@@ -1,7 +1,8 @@
 const express = require("express");
 const Users = require("../models/user");
+const jwt = require('jsonwebtoken');
 const Joi = require('joi');
-const authMiddleware = require('./middlewares/auth-middleware');
+const authMiddleware = require('../middlewares/auth-middleware');
 const router = express.Router();
 
 /**
@@ -127,7 +128,6 @@ router.post('/login', async (req, res) => {
             token, // 토큰 전달
         });
     } catch (err) {
-        // 
         res.send({
             ok:false,
             result: '닉네임 또는 패스워드를 확인해주세요2.',
