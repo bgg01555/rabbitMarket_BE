@@ -17,7 +17,7 @@ app.use(cors())
 
 
 const postRouter = require("./routes/post");
-app.use("/api", [postRouter]/* [goodRouter,userRouter] 이런식으로 쓸수도*/);
+app.use("/api", [postRouter, userRouter]/* [goodRouter,userRouter] 이런식으로 쓸수도*/);
 
 app.get("/", async (req, res) => {
   //await user.create({ userId: 'test', password: 'test', nickname: 'test' });
