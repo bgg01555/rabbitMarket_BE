@@ -14,7 +14,6 @@ app.use(express.urlencoded({ extended: true }))
 
 
 app.use(cors())
-//app.use("/api", [userRouter]);
 
 
 const postRouter = require("./routes/post");

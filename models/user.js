@@ -11,7 +11,6 @@ const userSchema = new mongoose.Schema({
   nickname: {
     type: String,
     required: true,
-    unique: true,
   }
 },
   { timestamps: true } // createdAt, updatedAt 으로 Date형 객체 입력)
