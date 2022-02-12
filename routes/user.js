@@ -1,7 +1,7 @@
 const express = require("express")
 const Users = require("../models/user")
 const Joi = require("joi")
-const authMiddleware = require("./middlewares/auth-middleware")
+const authMiddleware = require("../middlewares/auth-middleware")
 const router = express.Router()
 
 /**
@@ -120,6 +120,7 @@ router.post("/login", async (req, res) => {
       return
     }
     const token = jwt.sign({ userId: user.userId }, "MY-SECRET-KEY") // 토큰을 서버쪽에서 sign 하여 생성
+    console.log(token)
     res.send({
       token, // 토큰 전달
     })
