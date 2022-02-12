@@ -2,17 +2,17 @@ const express = require("express")
 const router = express.Router()
 const Comments = require("../models/comment")
 const authMiddleware = require("../middlewares/auth-middleware")
-//const Posts = require("../models/post")
+const Posts = require("../models/post")
 
 //댓글 작성
 router.post("/comments", authMiddleware, async (req, res) => {
-  console.log(res.locals)
-  const { postId, comment, nickname, userId } = req.body
+  let { user } = res.locals
+  const { comment, postId } = req.body
   const comments = await new Comments({
     comment,
-    nickname,
+    nickname: user.nickname,
     postId,
-    userId,
+    userId: user.userId,
   })
   try {
     const result = await comments.save()
