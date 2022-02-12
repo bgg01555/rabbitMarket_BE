@@ -1,36 +1,37 @@
 const mongoose = require("mongoose")
 //const Comment = require('../schemas/comment');
 
-const PostSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true,
+const PostSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+    },
+    content: {
+      type: String,
+      required: true,
+    },
+    price: {
+      type: Number,
+      required: true,
+    },
+    imgurl: {
+      type: String,
+      required: true,
+    },
+    isSold: {
+      type: Boolean,
+      required: true,
+    },
+    nickname: {
+      type: String,
+      required: true,
+    },
+    userId: {
+      type: String,
+      required: true,
+    },
   },
-  content: {
-    type: String,
-    required: true,
-  },
-  price: {
-    type: Number,
-    required: true,
-  },
-  imgurl: {
-    type: String,
-    required: true,
-  },
-  isSold: {
-    type: Boolean,
-    required: true,
-  },
-  nickname: {
-    type: String,
-    required: true,
-  },
-  userId: {
-    type: String,
-    required: true,
-  }
-},
   // date: {
   //     type: String,
   //     required: true,
