@@ -1,11 +1,11 @@
 const express = require("express")
 const router = express.Router()
 const Comments = require("../models/comment")
-//const authMiddleware = require("../middlewares/auth-middleware")
+const authMiddleware = require("../middlewares/auth-middleware")
 //const Posts = require("../models/post")
 
 //댓글 작성
-router.post("/comments", async (req, res) => {
+router.post("/comments", authMiddleware, async (req, res) => {
   console.log(res.locals)
   const { postId, comment, nickname, userId } = req.body
   const comments = await new Comments({
@@ -27,7 +27,7 @@ router.post("/comments", async (req, res) => {
 })
 
 //댓글 삭제
-router.delete("/comments", async (req, res) => {
+router.delete("/comments", authMiddleware, async (req, res) => {
   const { commentId } = req.body
   try {
     const comment = await Comments.findByIdAndDelete(commentId)
