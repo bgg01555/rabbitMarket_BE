@@ -66,7 +66,7 @@ const router = express.Router();
             result:"회원가입을 축하드립니다."
         });
     } catch (err) {
-        let validationErrorMessage = '뭔가에러남';
+        let validationErrorMessage = '';
         let JoiMessage = '';
         if(err.details){
             JoiMessage = err.details[0].message; // Joi 에서 발생하는 오류 메시지.
@@ -100,6 +100,22 @@ const router = express.Router();
             result: validationErrorMessage,
         });
     }
+});
+
+// 중복 아이디 체크
+router.post('/checkid', async (req, res) => {
+    const { loginId } = req.body;
+    const user = await Users.findOne({ userId:loginId }).exec();
+    if(!user){
+        res.send({
+            ok:true, // 사용가능한 아이디 입니다.
+        })
+    } else {
+        res.send({
+            ok:false, // 중복된 아이디가 있습니다.
+        })
+    }
+
 });
 
 /**
