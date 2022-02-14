@@ -94,4 +94,33 @@ router.delete("/posts", authMiddleware, async (req, res) => {
     return res.json({ ok: false, result: "삭제 권한이 없습니다." });
 })
 
+
+//판매중-판매완료 상태수정
+router.patch("/status", authMiddleware, async function (req, res) {
+    const { postId } = req.body;
+    let { user } = res.locals;
+
+    let post = await Post.findById(postId);
+    if (post.userId === user.userId) {
+        await Post.updateOne(
+            { _id: postId },
+            {
+                $set: {
+                    isSold: !post.isSold
+                }
+            }
+        )
+        if (!post.isSold) {
+            return res.json({ ok: true, result: '판매완료로 변경 되었습니다.' });
+        }
+        else {
+            return res.json({ ok: true, result: '판매중으로 변경 되었습니다.' });
+        }
+    }
+    else {
+        return res.json({ ok: false, result: '권한이 없습니다.' });
+    }
+});
+
+
 module.exports = router;
