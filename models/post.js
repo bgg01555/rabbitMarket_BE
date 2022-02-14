@@ -20,9 +20,9 @@ const PostSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-    imgurl: [
+    imgurls: [
       {
-        images: {
+        imgurl: {
           type: String,
           required: true,
         },

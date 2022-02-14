@@ -34,6 +34,19 @@ router.get("/posts/:postId", async function (req, res) {
   })
 })
 
+//image upload to s3
+router.post("/image", upload.single("imgUrl"), authMiddleware, async (req, res, next) => {
+  const file = await req.file
+  console.log(file)
+  try {
+    const result = await file.location
+    console.log(result)
+    res.status(200).json({ imgurl: result })
+  } catch (e) {
+    console.log(e)
+  }
+})
+
 //판매 상품 등록
 router.post("/posts", authMiddleware, async function (req, res) {
   const { title, price, imgurl, content } = req.body
@@ -123,19 +136,6 @@ router.patch("/status", authMiddleware, async function (req, res) {
     }
   } else {
     return res.json({ ok: false, result: "권한이 없습니다." })
-  }
-})
-
-//image upload to s3
-router.post("/image", upload.single("imgUrl"), async (req, res, next) => {
-  const file = await req.file
-  //console.log(file)
-  try {
-    const result = await file.location
-    //console.log(result)
-    res.status(200).json({ imgurl: result })
-  } catch (e) {
-    console.log(e)
   }
 })
 

@@ -5,18 +5,21 @@ const express = require("express")
 const router = express.Router()
 const path = require("path")
 const Posts = require("../models/post")
+require("dotenv").config()
 
 const s3 = new AWS.S3({
-  accessKeyId: "AKIARVRW75BRKUUXQSPH",
-  secretAccessKey: "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",
-  region: "ap-northeast-2",
+  accessKeyId: process.env.S3_ACCESS_KEY,
+  secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+  region: process.env.S3_BUCKET_REGION,
 })
+
+
 
 const upload = multer({
   storage: multerS3({
     s3: s3,
     bucket: "rabbitmarket",
-    acl: "bucket-owner-full-control",
+    acl: "public-read",
     contentType: multerS3.AUTO_CONTENT_TYPE,
     key: function (req, file, cb) {
       cb(

@@ -6,7 +6,7 @@ const app = express()
 const commentsRouter = require("./routes/comment")
 const postRouter = require("./routes/post")
 const userRouter = require("./routes/user")
-const uploadImg = require("./routes/upload")
+
 connect()
 
 //body 읽기
