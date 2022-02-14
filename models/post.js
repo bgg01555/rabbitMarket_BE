@@ -1,5 +1,7 @@
 const mongoose = require("mongoose")
+const { post } = require("../routes/upload")
 //const Comment = require('../schemas/comment');
+const Users = require("./user")
 
 const PostSchema = new mongoose.Schema(
   {
@@ -18,10 +20,14 @@ const PostSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-    imgurl: {
-      type: String,
-      required: true,
-    },
+    imgurl: [
+      {
+        images: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
     isSold: {
       type: Boolean,
       required: true,
@@ -51,6 +57,9 @@ PostSchema.set("toJSON", {
   virtuals: true,
 })
 
+//console.log(req.file)
+//console.log(req.file.location)
+
 // PostSchema.pre(
 //     "deleteOne", { document: false, query: true },
 //     async function (next) {
@@ -62,5 +71,5 @@ PostSchema.set("toJSON", {
 //         next();
 //     }
 // );
-
-module.exports = mongoose.model("Posts", PostSchema)
+const Posts = mongoose.model("Posts", PostSchema)
+module.exports = Posts
