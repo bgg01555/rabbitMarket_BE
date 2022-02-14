@@ -152,12 +152,12 @@ router.post("/login", async (req, res) => {
  * 내 정보 조회 API.
  * 사용자 인증 미들웨어. 경로와 function 사이에 미들웨어 변수를 불러와서 설정할 수 있다.
  */
-router.get("/users/me", authMiddleware, async (req, res) => {
+router.get("/checklogin", authMiddleware, async (req, res) => {
   // console.log(res.locals);
   // console.log(typeof(res.locals));
   /**
    * res.locals 내용 예시
-   * [Object: null prototpye] { user: { _id: new ObjectId("61f39afc469383be12e78e81"), email: 'test@test.com', nickname: 'mynickname', password: '1234', __v: 0 }}
+   * [Object: null prototpye] { user: { _id: new ObjectId("61e..81"), userId: 'test', password: '1234', nickname: 'mynickname', __v: 0 }}
    */
   const { user } = res.locals // user object
   res.send({
