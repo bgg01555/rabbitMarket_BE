@@ -45,7 +45,7 @@ router.post("/signup", async (req, res) => {
       // userId 중복 데이터가 존재 할 경우
       res.send({
         ok: false,
-        result: "중복된 닉네임입니다.",
+        result: "중복된 ID입니다.",
       })
       return
     }
