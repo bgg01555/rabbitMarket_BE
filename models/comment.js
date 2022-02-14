@@ -5,6 +5,7 @@ const commentsSchema = new mongoose.Schema(
     comment: {
       type: String,
       required: true,
+      trim: true,
     },
     nickname: {
       type: String,
