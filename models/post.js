@@ -20,14 +20,10 @@ const PostSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-    imgurls: [
-      {
-        imgurl: {
-          type: String,
-          required: true,
-        },
-      },
-    ],
+    imgurl: {
+      type: String,
+      required: true,
+    },
     isSold: {
       type: Boolean,
       required: true,
@@ -71,5 +67,4 @@ PostSchema.set("toJSON", {
 //         next();
 //     }
 // );
-const Posts = mongoose.model("Posts", PostSchema)
-module.exports = Posts
+module.exports = mongoose.model("Posts", PostSchema)
