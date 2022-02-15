@@ -1,3 +1,4 @@
+require("dotenv").config()
 const express = require("express")
 const connect = require("./models")
 const cors = require("cors")
@@ -15,7 +16,6 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 
 // 여러 라우터를 사용할 경우 배열 형태로 배치
-
 app.use(
   "/api",
   [postRouter, commentsRouter, userRouter] /* [goodRouter,userRouter] 이런식으로 쓸수도*/
