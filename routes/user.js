@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken")
 const Joi = require("joi")
 const authMiddleware = require("../middlewares/auth-middleware")
 const router = express.Router()
+const bcrypt = require("bcrypt")
 
 /**
  * 회원가입 API.
@@ -19,18 +20,7 @@ const postUserSchema = Joi.object({
 })
 router.post("/signup", async (req, res) => {
   try {
-    // const { nickname, email, password, confirmPassword } = req.body;
-    console.log(req.body)
-    // const { userId } = req.body.loginId;
-    // const { password } = req.body.password;
-    // const { nickname } = req.body.nickname;
     const { loginId, password, nickname } = await postUserSchema.validateAsync(req.body)
-
-    // console.log(loginId);
-    // console.log(userId);
-    console.log(password)
-    console.log(nickname)
-
     if (password.includes(loginId)) {
       res.send({
         ok: false,
@@ -57,7 +47,7 @@ router.post("/signup", async (req, res) => {
       result: "회원가입을 축하드립니다.",
     })
   } catch (err) {
-    let validationErrorMessage = "뭔가에러남"
+    let validationErrorMessage = ""
     let JoiMessage = ""
     if (err.details) {
       JoiMessage = err.details[0].message // Joi 에서 발생하는 오류 메시지.
@@ -98,7 +88,10 @@ router.post("/signup", async (req, res) => {
   }
 })
 
-// 중복 아이디 체크
+/**
+ * 중복 아이디 체크 API
+ * 입력받은 loginId 값으로 Users 스키마에 중복 아이디가 있는지 확인.
+ */ 
 router.post('/checkid', async (req, res) => {
     const { loginId } = req.body;
     const user = await Users.findOne({ userId:loginId }).exec();
@@ -119,22 +112,29 @@ router.post('/checkid', async (req, res) => {
  * postLoginSchema 는 loginId, password에 대해 검사할 규칙을 사용.
  */
 const postLoginSchema = Joi.object({
-  loginId: Joi.string().min(3).required(),
-  password: Joi.string().min(4).required(),
+  loginId: Joi.string().required(),
+  password: Joi.string().required(),
 })
-
 router.post("/login", async (req, res) => {
   try {
     const { loginId, password } = await postLoginSchema.validateAsync(req.body)
-
-    const user = await Users.findOne({ userId: loginId, password }).exec()
+    const user = await Users.findOne({ userId: loginId }).exec()
     if (!user) {
-      // request의 loginId, password 내용으로 일치하는 유저가 없는 경우
+      // request의 loginId 내용으로 일치하는 유저가 없는 경우
       res.send({
         ok: false,
-        result: "닉네임 또는 패스워드를 확인해주세요.",
+        result: "ID 또는 패스워드를 확인해주세요.",
       })
       return
+    }
+    // 로그인 시 사용자로부터 입력받은 패스워드와 bcrypt를 거쳐 저장된 패스워드 비교
+    const isSamePassword = await bcrypt.compare(password, user.password)
+    if(!isSamePassword){
+        res.send({
+            ok: false,
+            result: "ID 또는 패스워드를 확인해주세요.",
+          })
+          return
     }
     const token = jwt.sign({ userId: user.userId }, "MY-SECRET-KEY") // 토큰을 서버쪽에서 sign 하여 생성
     res.send({
@@ -143,18 +143,16 @@ router.post("/login", async (req, res) => {
   } catch (err) {
     res.send({
       ok: false,
-      result: "닉네임 또는 패스워드를 확인해주세요2.",
+      result: "ID 또는 패스워드를 모두 입력해주세요.",
     })
   }
 })
 
 /**
- * 내 정보 조회 API.
- * 사용자 인증 미들웨어. 경로와 function 사이에 미들웨어 변수를 불러와서 설정할 수 있다.
+ * 로그인 상태 체크 API.
+ * 사용자 인증 미들웨어. 현재 로그인한 사용자를 jwt.verify 한 정보를 넘겨준다.
  */
 router.get("/checklogin", authMiddleware, async (req, res) => {
-  // console.log(res.locals);
-  // console.log(typeof(res.locals));
   /**
    * res.locals 내용 예시
    * [Object: null prototpye] { user: { _id: new ObjectId("61e..81"), userId: 'test', password: '1234', nickname: 'mynickname', __v: 0 }}
