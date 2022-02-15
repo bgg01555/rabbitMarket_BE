@@ -26,6 +26,9 @@ router.get("/posts/:postId", async function (req, res) {
     Post.findById(postId, async function (err, post) {
         if (!err) {
             let comments = await Comment.find({ postId: postId })
+            comments.sort(function (a, b) {
+                return b.updatedAt - a.updatedAt;
+            });
             res.json({ ok: true, post, comments })
         } else {
             res.json({ ok: false, post: {}, comments: {} })
