@@ -1,3 +1,4 @@
+require("dotenv").config()
 const express = require("express")
 const connect = require("./models")
 const cors = require("cors")
@@ -6,7 +7,6 @@ const app = express()
 const commentsRouter = require("./routes/comment")
 const postRouter = require("./routes/post")
 const userRouter = require("./routes/user")
-require("dotenv").config()
 connect()
 
 //body 읽기

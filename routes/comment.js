@@ -2,7 +2,6 @@ const express = require("express")
 const router = express.Router()
 const Comments = require("../models/comment")
 const authMiddleware = require("../middlewares/auth-middleware")
-const Posts = require("../models/post")
 
 //댓글 작성
 router.post("/comments", authMiddleware, async (req, res) => {

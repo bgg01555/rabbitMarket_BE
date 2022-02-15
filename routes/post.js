@@ -2,7 +2,6 @@ const express = require("express")
 const router = express.Router()
 const Post = require("../models/post")
 const Comment = require("../models/comment")
-const User = require("../models/user")
 const authMiddleware = require("../middlewares/auth-middleware")
 const { upload } = require("./upload")
 
@@ -10,7 +9,7 @@ const { upload } = require("./upload")
 router.get("/posts", async (req, res) => {
   let posts = await Post.find({})
   posts.sort(function (a, b) {
-    return new Date(a.updatedAt) - new Date(b.updatedAt)
+    return b.updatedAt - a.updatedAt
   })
   // for (let i = 0; i < posts.length; i++) {
   //     const comments_cnt = await Comment.count({ postId: posts[i]._id })
@@ -27,6 +26,9 @@ router.get("/posts/:postId", async function (req, res) {
   Post.findById(postId, async function (err, post) {
     if (!err) {
       let comments = await Comment.find({ postId: postId })
+      comments.sort(function (a, b) {
+        return b.updatedAt - a.updatedAt
+      })
       res.json({ ok: true, post, comments })
     } else {
       res.json({ ok: false, post: {}, comments: {} })
