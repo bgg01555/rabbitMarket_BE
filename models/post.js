@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-//const Comment = require('../schemas/comment');
+const Comment = require('../models/comment');
 
 const PostSchema = new mongoose.Schema(
   {
@@ -51,6 +51,17 @@ PostSchema.set("toJSON", {
   virtuals: true,
 })
 
+PostSchema.pre(
+  "deleteOne", { document: false, query: true },
+  async function (next) {
+    // post id
+    const { _id } = this.getFilter();
+
+    // 관련 댓글 삭제
+    await Comment.deleteMany({ postId: _id });
+    next();
+  }
+);
 // PostSchema.pre(
 //     "deleteOne", { document: false, query: true },
 //     async function (next) {
