@@ -2,9 +2,6 @@ const AWS = require("aws-sdk")
 const multer = require("multer")
 const multerS3 = require("multer-s3")
 const express = require("express")
-//const router = express.Router()
-//const path = require("path")
-//const Posts = require("../models/post")
 require("dotenv").config()
 
 //dot env 로 환경변수 모두 숨김
