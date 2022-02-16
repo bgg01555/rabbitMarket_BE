@@ -4,6 +4,7 @@ const Post = require('../models/post');
 const Comment = require('../models/comment');
 const authMiddleware = require('../middlewares/auth-middleware');
 const { upload } = require('./upload');
+const foo = 'test';
 
 //전체 상품 조회
 router.get('/posts', async (req, res) => {
