@@ -5,7 +5,6 @@ const Joi = require('joi');
 const authMiddleware = require('../middlewares/auth-middleware');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-
 /**
  * 회원가입 API.
  * 특정 pattern을 미리 정규표현식으로 정의하여, 변수로 선언해둔다.

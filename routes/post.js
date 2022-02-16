@@ -11,10 +11,11 @@ router.get('/posts', async (req, res) => {
     posts.sort(function (a, b) {
         return b.updatedAt - a.updatedAt;
     });
-    // for (let i = 0; i < posts.length; i++) {
-    //     const comments_cnt = await Comment.count({ postId: posts[i]._id })
-    //     posts[i].comments_cnt = comments_cnt;
-    // }
+    for (let i = 0; i < posts.length; i++) {
+        const comments_cnt = await Comment.count({ postId: posts[i]._id });
+        posts[i]._doc.comments_cnt = comments_cnt;
+    }
+    //console.log(posts);
     res.json({ ok: true, posts });
 });
 
@@ -29,10 +30,11 @@ router.get('/search', async (req, res) => {
     posts.sort(function (a, b) {
         return b.updatedAt - a.updatedAt;
     });
-    // for (let i = 0; i < posts.length; i++) {
-    //     const comments_cnt = await Comment.count({ postId: posts[i]._id })
-    //     posts[i].comments_cnt = comments_cnt;
-    // }
+    for (let i = 0; i < posts.length; i++) {
+        const comments_cnt = await Comment.count({ postId: posts[i]._id });
+        posts[i]._doc.comments_cnt = comments_cnt;
+    }
+    //console.log(posts);
     res.json({ ok: true, posts });
 });
 
@@ -56,14 +58,14 @@ router.get('/posts/:postId', async function (req, res) {
 
 router.post('/image', upload.single('imgUrl'), async (req, res) => {
     const file = await req.file;
-    console.log(file);
+    //console.log(file);
     try {
         const result = await file.location;
-        console.log(result);
+        //console.log(result);
         //사진경로가있는 주소를  imgurl이라는 이름으로 저장
         res.status(200).json({ imgurl: result });
     } catch (e) {
-        console.log(e);
+        //console.log(e);
     }
 });
 //판매 상품 등록
@@ -156,6 +158,24 @@ router.patch('/status', authMiddleware, async function (req, res) {
     } else {
         return res.json({ ok: false, result: '권한이 없습니다.' });
     }
+});
+
+// 판매중/판매완료 따라 분류
+router.get('/sales', async (req, res) => {
+    const { isSold } = req.query;
+    if (!isSold) {
+        return res.json({ ok: false, posts: {} });
+    }
+
+    let posts = await Post.find({ isSold: isSold });
+    posts.sort(function (a, b) {
+        return b.updatedAt - a.updatedAt;
+    });
+    for (let i = 0; i < posts.length; i++) {
+        const comments_cnt = await Comment.count({ postId: posts[i]._id });
+        posts[i]._doc.comment_cnt = comments_cnt;
+    }
+    return res.json({ ok: true, posts });
 });
 
 module.exports = router;
