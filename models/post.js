@@ -43,10 +43,7 @@ PostSchema.virtual('postId').get(function () {
     return this._id.toHexString();
 });
 
-PostSchema.set('toJSON', {
-    virtuals: true,
-});
-
+PostSchema.set('toJSON', { virtuals: true });
 PostSchema.pre('deleteOne', { document: false, query: true }, async function (next) {
     // post id
     const { _id } = this.getFilter();

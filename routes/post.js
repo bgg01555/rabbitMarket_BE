@@ -4,7 +4,6 @@ const Post = require('../models/post');
 const Comment = require('../models/comment');
 const authMiddleware = require('../middlewares/auth-middleware');
 const { upload } = require('./upload');
-const foo = 'test';
 
 //전체 상품 조회
 router.get('/posts', async (req, res) => {
@@ -12,18 +11,18 @@ router.get('/posts', async (req, res) => {
     posts.sort(function (a, b) {
         return b.updatedAt - a.updatedAt;
     });
-    // for (let i = 0; i < posts.length; i++) {
-    //     const comments_cnt = await Comment.count({ postId: posts[i]._id })
-    //     posts[i].comments_cnt = comments_cnt;
-    // }
 
+    for (let i = 0; i < posts.length; i++) {
+        const comments_cnt = await Comment.count({ postId: posts[i]._id });
+        posts[i]._doc.comment_cnt = comments_cnt;
+        // console.log(posts[i]);
+    }
     res.json({ ok: true, posts });
 });
 
 //상세 상품 조회
 router.get('/posts/:postId', async function (req, res) {
     const { postId } = req.params;
-
     Post.findById(postId, async function (err, post) {
         if (!err) {
             let comments = await Comment.find({ postId: postId });
@@ -141,6 +140,24 @@ router.patch('/status', authMiddleware, async function (req, res) {
     } else {
         return res.json({ ok: false, result: '권한이 없습니다.' });
     }
+});
+
+// 판매중/판매완료 따라 분류
+router.get('/sales', async (req, res) => {
+    const { isSold } = req.query;
+    if (!isSold) {
+        return res.json({ ok: false, posts: {} });
+    }
+
+    let posts = await Post.find({ isSold: isSold });
+    posts.sort(function (a, b) {
+        return b.updatedAt - a.updatedAt;
+    });
+    for (let i = 0; i < posts.length; i++) {
+        const comments_cnt = await Comment.count({ postId: posts[i]._id });
+        posts[i]._doc.comment_cnt = comments_cnt;
+    }
+    return res.json({ ok: true, posts });
 });
 
 module.exports = router;
