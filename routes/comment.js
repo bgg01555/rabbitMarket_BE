@@ -27,22 +27,24 @@ router.post('/comments', authMiddleware, async (req, res) => {
 });
 
 //댓글 수정
-
 router.patch('/comments', authMiddleware, async (req, res) => {
     let { user } = res.locals;
     const { commentId, comment } = req.body;
 
     try {
-        const findCommentOwner = await Comments.findOneAndUpdate({
+        const findCommentOwner = await Comments.findOne({
             commentId,
             userId: user.userId,
         });
 
-        console.log(findCommentOwner);
-
         if (findCommentOwner.userId === user.userId) {
-            await Comments.updateOne({ _id: commentId }, { $set: { comment } });
-            res.json({ ok: true, msg: '댓글 수정 완료' });
+            const result = await Comments.findByIdAndUpdate(
+                { _id: commentId },
+                { $set: { comment } },
+                { new: true }
+            ).exec();
+            //const updatedComment = await result.save();
+            return res.send({ ok: true, result });
         } else {
             res.status(400).json({ msg: '수정권한 없음' });
         }
