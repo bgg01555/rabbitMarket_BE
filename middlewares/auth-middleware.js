@@ -3,6 +3,14 @@ const User = require("../models/user")
 
 module.exports = (req, res, next) => {
   const { authorization } = req.headers
+  if (!authorization){
+    res.send({
+      ok: false,
+      result: "auth-middleware 사용자 인증 실패. 인증 토큰이 비어있습니다.", 
+      headers: req.headers
+    })
+    return
+  }
   const [tokenType, tokenValue] = authorization.split(" ") // 공백을 기준으로 잘라 배열로 반환.
 
   // tokenType 값이 'Bearer' 가 아닌 경우 토큰값이 없다고 판별하고 튕겨냄.
