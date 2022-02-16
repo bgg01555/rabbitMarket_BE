@@ -18,6 +18,24 @@ router.get('/posts', async (req, res) => {
     res.json({ ok: true, posts });
 });
 
+// 상품 제목으로 검색 결과 조회
+router.get('/search', async (req, res) => {
+    let { title } = req.query;
+    const regex = (pattern) => new RegExp(`.*${pattern}.*`);
+    const titleRegex = regex(title);
+
+    let posts = await Post.find({ title: { $regex: titleRegex } });
+
+    posts.sort(function (a, b) {
+        return b.updatedAt - a.updatedAt;
+    });
+    // for (let i = 0; i < posts.length; i++) {
+    //     const comments_cnt = await Comment.count({ postId: posts[i]._id })
+    //     posts[i].comments_cnt = comments_cnt;
+    // }
+    res.json({ ok: true, posts });
+});
+
 //상세 상품 조회
 router.get('/posts/:postId', async function (req, res) {
     const { postId } = req.params;
