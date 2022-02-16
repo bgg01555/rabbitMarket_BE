@@ -11,12 +11,30 @@ router.get('/posts', async (req, res) => {
     posts.sort(function (a, b) {
         return b.updatedAt - a.updatedAt;
     });
-
     for (let i = 0; i < posts.length; i++) {
         const comments_cnt = await Comment.count({ postId: posts[i]._id });
-        posts[i]._doc.comment_cnt = comments_cnt;
-        // console.log(posts[i]);
+        posts[i]._doc.comments_cnt = comments_cnt;
     }
+    //console.log(posts);
+    res.json({ ok: true, posts });
+});
+
+// 상품 제목으로 검색 결과 조회
+router.get('/search', async (req, res) => {
+    let { title } = req.query;
+    const regex = (pattern) => new RegExp(`.*${pattern}.*`);
+    const titleRegex = regex(title);
+
+    let posts = await Post.find({ title: { $regex: titleRegex } });
+
+    posts.sort(function (a, b) {
+        return b.updatedAt - a.updatedAt;
+    });
+    for (let i = 0; i < posts.length; i++) {
+        const comments_cnt = await Comment.count({ postId: posts[i]._id });
+        posts[i]._doc.comments_cnt = comments_cnt;
+    }
+    //console.log(posts);
     res.json({ ok: true, posts });
 });
 
@@ -40,14 +58,14 @@ router.get('/posts/:postId', async function (req, res) {
 
 router.post('/image', upload.single('imgUrl'), async (req, res) => {
     const file = await req.file;
-    console.log(file);
+    //console.log(file);
     try {
         const result = await file.location;
-        console.log(result);
+        //console.log(result);
         //사진경로가있는 주소를  imgurl이라는 이름으로 저장
         res.status(200).json({ imgurl: result });
     } catch (e) {
-        console.log(e);
+        //console.log(e);
     }
 });
 //판매 상품 등록
