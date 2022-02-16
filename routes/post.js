@@ -173,7 +173,7 @@ router.get('/sales', async (req, res) => {
     });
     for (let i = 0; i < posts.length; i++) {
         const comments_cnt = await Comment.count({ postId: posts[i]._id });
-        posts[i]._doc.comment_cnt = comments_cnt;
+        posts[i]._doc.comments_cnt = comments_cnt;
     }
     return res.json({ ok: true, posts });
 });
