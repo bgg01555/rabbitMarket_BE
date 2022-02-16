@@ -15,7 +15,8 @@
         // jsx 허용을 설정, back-end 설정이기 때문에 사용 안함
         "ecmaFeatures": {
             "jsx": false
-        }
+        },
+        "requireConfigFile": false
     },
     //"parser": "babel-parser",
     // linter가 파일을 분석할 때, 미리 정의된 전역변수에 무엇이 있는지 명시하는 속성
