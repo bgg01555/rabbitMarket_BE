@@ -38,19 +38,19 @@ router.get('/posts/:postId', async function (req, res) {
 });
 
 //image upload to s3 사진 1개씩 저장,
-router.post('/image', upload.single('imgUrl'), authMiddleware, async (req, res, next) => {
+
+router.post('/image', upload.single('imgUrl'), async (req, res) => {
     const file = await req.file;
-    //console.log(file)
+    console.log(file);
     try {
         const result = await file.location;
-        //console.log(result)
-        //사진경로가있는 주소를 imgurl이라는 이름으로 저장
+        console.log(result);
+        //사진경로가있는 주소를  imgurl이라는 이름으로 저장
         res.status(200).json({ imgurl: result });
     } catch (e) {
         console.log(e);
     }
 });
-
 //판매 상품 등록
 router.post('/posts', authMiddleware, async function (req, res) {
     const { title, price, imgurl, content } = req.body;
