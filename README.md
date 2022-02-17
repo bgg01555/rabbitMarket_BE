@@ -14,14 +14,18 @@
 신속 정확한 거래를 해보아요.
 </p>
 
- Web Site : http://hanghae99-rabbitmarket.s3-website.ap-northeast-2.amazonaws.com/</br>
+### :arrow_down: Click!
+[![5조 토끼장터 웹사이트](https://user-images.githubusercontent.com/82128525/154483293-18ee1142-2ca8-4b48-abfd-ba73791078a4.gif)](http://hanghae99-rabbitmarket.s3-website.ap-northeast-2.amazonaws.com/) 
+</br>
 
 <br><br>
 
 
 ## 🎥 시연 영상
 
+### :arrow_down: Click!
 
+ [![5조 토끼장터 시연영상](http://img.youtube.com/vi/iQ80Nb2BXTo/0.jpg)](https://youtu.be/iQ80Nb2BXTo) 
 <br><br>
 
 ## 🧑🏼 개발기간 및 팀원소개
