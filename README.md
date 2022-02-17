@@ -39,12 +39,12 @@
 ### Front-end
 
 <p><a href="https://github.com/clappingmin"><img width="180"  src="https://img.shields.io/static/v1?label=React&message=Sumin Park&color=61dafb&style=for-the-badge&>"/></a></p>
-<p><a href="ttps://github.com/Junparkk"><img width="180"  src="https://img.shields.io/static/v1?label=React&message=HyoJun Park&color=61dafb&style=for-the-badge&>"/></a></p>
+<p><a href="https://github.com/Junparkk"><img width="180"  src="https://img.shields.io/static/v1?label=React&message=HyoJun Park&color=61dafb&style=for-the-badge&>"/></a></p>
 
 
 ### Notion
 
-<p><a href="https://github.com/YYZA"><img width="180"  src="https://img.shields.io/static/v1?label=Team&message=Notion&color=61dafb&style=for-the-badge&>"/></a></p>
+<p><a href="https://www.notion.so/17ff16d892c54f32810e0d41a39b19de"><img width="180"  src="https://img.shields.io/static/v1?label=Team&message=Notion&color=61dafb&style=for-the-badge&>"/></a></p>
 
 <br>
 <br>
