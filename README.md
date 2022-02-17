@@ -16,16 +16,15 @@
 
  Web Site : http://hanghae99-rabbitmarket.s3-website.ap-northeast-2.amazonaws.com/</br>
 
-<br>
-<br>
+<br><br>
 
 
 ## 🎥 시연 영상
 
 
-<br>
-<br>
-## 🧑🏼‍💻 개발기간 및 팀원소개
+<br><br>
+
+## 🧑🏼 개발기간 및 팀원소개
 
 ### 기간: 2022.02.11 ~ 2022.02.17
 
@@ -49,15 +48,19 @@
 
 <br>
 <br>
+
 ## 🔨사용한 기술 스택
 
 
 
-<code> Front-end </code>
-</br>
+### 🖥Front-End 기술스택
 
-- [Front-end GITHUB](https://github.com/asfasf)
-</p>
+|   이름   |        설명        |
+| :------: | :----------------: |
+| empty  | empty |
+| empty  |   empty    |
+|  empty |    empty     |
+
 <br><br>
 
 ### 🖥 Back-End 기술스택
@@ -89,6 +92,7 @@
 
 
 <br><br>
+
 ## :golf: Deploy
 
 |Deploy|
@@ -97,17 +101,17 @@
 | AWS S3|
 
 
-<br>
-<br>
+<br><br>
 
 ## :scroll: Wire Frame
 <img width="789" alt="Untitled" src="https://user-images.githubusercontent.com/63644481/154420216-4b7db265-7f8f-43f6-8fdc-ee878c5dd258.png">
 
-<br>
-<br>
+<br><br>
+
 ## :wrench: DB Schema
 <img width="355" alt="캡처" src="https://user-images.githubusercontent.com/63644481/154421645-f724c2fb-f281-4e53-9398-33d469cd8091.PNG">
 
+<br><br>
 
 ## :closed_book: API
 
@@ -130,8 +134,7 @@
 |상품 검색            |GET   |/api/search?title=에어팟 |body{ title }                                                                                                                    |{ ok:true, <br> result: <br> posts: {postId: String, title: string,  <br> content:String, price:Number, <br> imgurl : string, createdAt:string,<br>  updatedAt:string, nickname:string,<br>  userId:String, isSold:Boolean, <br> comments_cnt:number }[] }                                                                                                                                                                        |
 |판매중/판매완료 분류해서 보이기|GET   |/api/sales?isSold=true|                                                                                                                                 |{ ok:true,<br>  result:<br>  posts: {postId: String, title: string,  content:String,<br>  price:Number,  imgurl : string, createdAt:string, updatedAt:string, nickname:string, userId:String, isSold:Boolean, comments_cnt:number }[] }                                                                                                                                                                        |
 
-<br>
-<br>
+<br><br>
 
 ## :hammer: Trouble Shooting
 
