@@ -52,17 +52,6 @@
 ## 🔨사용한 기술 스택
 
 
-
-### 🖥Front-End 기술스택
-
-|   이름   |        설명        |
-| :------: | :----------------: |
-| empty  | empty |
-| empty  |   empty    |
-|  empty |    empty     |
-
-<br><br>
-
 ### 🖥 Back-End 기술스택
 
 |   이름   |        설명        |
