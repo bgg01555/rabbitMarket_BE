@@ -37,6 +37,11 @@
 <p><a href="https://github.com/cslim0527"><img width="180"  src="https://img.shields.io/static/v1?label=React&message=Sumin Park&color=61dafb&style=for-the-badge&>"/></a></p>
 <p><a href="https://github.com/YYZA"><img width="180"  src="https://img.shields.io/static/v1?label=React&message=Hyomin Choi&color=61dafb&style=for-the-badge&>"/></a></p>
 
+
+### Notion
+
+<p><a href="https://github.com/YYZA"><img width="180"  src="https://img.shields.io/static/v1?label=Team&message=Notion&color=61dafb&style=for-the-badge&>"/></a></p>
+
 </br>
 
 ## 🔨사용한 기술 스택
@@ -84,17 +89,16 @@
 | AWS s3  |
 
 ## Wire Frame
+<img width="789" alt="Untitled" src="https://user-images.githubusercontent.com/63644481/154420216-4b7db265-7f8f-43f6-8fdc-ee878c5dd258.png">
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b20a5faa-cf9b-4a25-8e45-280cafd9634b/Untitled.png)
 
 ## DB Schema
+![Team5 drawio](https://user-images.githubusercontent.com/63644481/154420267-7de7a594-b88f-445b-af2a-aa3319418f04.png)
 
-![Team5.drawio.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/da86b70e-0257-484c-bdcc-8e08723904c8/Team5.drawio.png)
 
 ## API
 
 https://www.notion.so/f2d29163d0da4c778d0e46762a9c804a?v=3d54da442fed4952b51fd88877b37021
 
 ## Trouble Shooting
-
 
