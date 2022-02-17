@@ -85,8 +85,10 @@
 
 <br><br>
 ## Deploy
-| AWS EC2 |
-| AWS s3  |
+| |
+| - |
+| EC2   |   
+| AWS S3|
 
 ## Wire Frame
 <img width="789" alt="Untitled" src="https://user-images.githubusercontent.com/63644481/154420216-4b7db265-7f8f-43f6-8fdc-ee878c5dd258.png">
