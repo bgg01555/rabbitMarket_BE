@@ -38,8 +38,8 @@
 
 ### Front-end
 
-<p><a href="https://github.com/cslim0527"><img width="180"  src="https://img.shields.io/static/v1?label=React&message=Sumin Park&color=61dafb&style=for-the-badge&>"/></a></p>
-<p><a href="https://github.com/YYZA"><img width="180"  src="https://img.shields.io/static/v1?label=React&message=Hyomin Choi&color=61dafb&style=for-the-badge&>"/></a></p>
+<p><a href="https://github.com/clappingmin"><img width="180"  src="https://img.shields.io/static/v1?label=React&message=Sumin Park&color=61dafb&style=for-the-badge&>"/></a></p>
+<p><a href="ttps://github.com/Junparkk"><img width="180"  src="https://img.shields.io/static/v1?label=React&message=HyoJun Park&color=61dafb&style=for-the-badge&>"/></a></p>
 
 
 ### Notion
