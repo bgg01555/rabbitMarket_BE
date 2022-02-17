@@ -93,7 +93,7 @@
 
 
 ## DB Schema
-![Team5 drawio](https://user-images.githubusercontent.com/63644481/154420267-7de7a594-b88f-445b-af2a-aa3319418f04.png)
+<img width="355" alt="캡처" src="https://user-images.githubusercontent.com/63644481/154421645-f724c2fb-f281-4e53-9398-33d469cd8091.PNG">
 
 
 ## API
