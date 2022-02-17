@@ -28,15 +28,14 @@
 
 ### Back-end
 
-<p><a href="https://github.com/JooYoung2274"><img width="180"  src="https://img.shields.io/static/v1?label=Node.js&message=aaaa&color=08CE5D&style=for-the-badge&>"/></a></p>
-<p><a href="https://github.com/doyeon8621"><img width="180"  src="https://img.shields.io/static/v1?label=Node.js&message=aaa&color=08CE5D&style=for-the-badge&>"/></a></p>
-<p><a href="https://github.com/golddong98"><img width="180"  src="https://img.shields.io/static/v1?label=Node.js&message=aaaa&color=08CE5D&style=for-the-badge&>"/></a></p>
+<p><a href="https://github.com/daonez"><img width="180"  src="https://img.shields.io/static/v1?label=Node.js&message=Francisco Choi&color=08CE5D&style=for-the-badge&>"/></a></p>
+<p><a href="https://github.com/Sinclebear"><img width="180"  src="https://img.shields.io/static/v1?label=Node.js&message=Sanghyuk Jin&color=08CE5D&style=for-the-badge&>"/></a></p>
+<p><a href="https://github.com/bgg01555"><img width="180"  src="https://img.shields.io/static/v1?label=Node.js&message=Juhyeon Yu&color=08CE5D&style=for-the-badge&>"/></a></p>
 
 ### Front-end
 
-<p><a href="https://github.com/cslim0527"><img width="180"  src="https://img.shields.io/static/v1?label=React&message=aaaa&color=61dafb&style=for-the-badge&>"/></a></p>
-<p><a href="https://github.com/YYZA"><img width="180"  src="https://img.shields.io/static/v1?label=React&message=aa&color=61dafb&style=for-the-badge&>"/></a></p>
-<p><a href="https://github.com/jawoon816"><img width="180"  src="https://img.shields.io/static/v1?label=React&message=aaa&color=61dafb&style=for-the-badge&>"/></a></p>
+<p><a href="https://github.com/cslim0527"><img width="180"  src="https://img.shields.io/static/v1?label=React&message=Sumin Park&color=61dafb&style=for-the-badge&>"/></a></p>
+<p><a href="https://github.com/YYZA"><img width="180"  src="https://img.shields.io/static/v1?label=React&message=Hyomin Choi&color=61dafb&style=for-the-badge&>"/></a></p>
 
 </br>
 
@@ -51,14 +50,13 @@
 </p>
 <br><br>
 
-## 🖥 Back-End 기술스택
+### 🖥 Back-End 기술스택
 
 |   이름   |        설명        |
 | :------: | :----------------: |
 | Node.js  | Javascript Runtime |
 | Express  |   Web Framework    |
-|  MongoDB   |      Database      |
-
+|  MongoDB |      Database      |
 
 
 <br><br>
@@ -72,7 +70,7 @@
 |        cors        | Request resource 제한 |  2.8.5   |
 |       dotenv       |     환경변수 설정     |  16.0.0  |
 |       joi       |   validator     |  17.6.0   |
-|  jsonwebtoken   | 인증인가   |  8.5.1   |
+|  jsonwebtoken   |  유저 인증   |  8.5.1   |
 | mongoose |    Model Schema     |  6.2.1   |
 |       multer       |  이미지 데이터 처리   |  1.4.4   |
 |     multer-S3      |   사진 파일 업로드    |  2.10.0  |
@@ -81,5 +79,22 @@
 
 
 <br><br>
+## Deploy
+| AWS EC2 |
+| AWS s3  |
 
-## REST API 
+## Wire Frame
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b20a5faa-cf9b-4a25-8e45-280cafd9634b/Untitled.png)
+
+## DB Schema
+
+![Team5.drawio.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/da86b70e-0257-484c-bdcc-8e08723904c8/Team5.drawio.png)
+
+## API
+
+https://www.notion.so/f2d29163d0da4c778d0e46762a9c804a?v=3d54da442fed4952b51fd88877b37021
+
+## Trouble Shooting
+
+
