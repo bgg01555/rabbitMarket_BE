@@ -46,10 +46,13 @@
 <p><a href="https://github.com/Junparkk"><img width="180"  src="https://img.shields.io/static/v1?label=React&message=HyoJun Park&color=61dafb&style=for-the-badge&>"/></a></p>
 
 
+### Front-end Repo
+
+<p><a href="https://github.com/clappingmin/rabbitMarket_FE"><img width="180"  src="https://img.shields.io/static/v1?label=Github&message=rabbitMarket_FE&color=61dafb&style=for-the-badge&>"/></a></p>
+
 ### Notion
 
 <p><a href="https://www.notion.so/17ff16d892c54f32810e0d41a39b19de"><img width="180"  src="https://img.shields.io/static/v1?label=Team&message=Notion&color=61dafb&style=for-the-badge&>"/></a></p>
-
 <br>
 <br>
 
