@@ -53,7 +53,7 @@
 
 ### Notion
 
-<p><a href="https://www.notion.so/17ff16d892c54f32810e0d41a39b19de"><img width="180"  src="https://img.shields.io/static/v1?label=Team&message=Notion&color=61dafb&style=for-the-badge&>"/></a></p>
+<p><a href="https://www.notion.so/17ff16d892c54f32810e0d41a39b19de"><img width="180"  src="https://img.shields.io/static/v1?label=Notion&message=Team Notion&color=08CE5D&style=for-the-badge&>"/></a></p>
 <br>
 <br>
 
