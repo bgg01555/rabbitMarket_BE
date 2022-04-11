@@ -48,7 +48,8 @@
 
 ### Front-end Repo
 
-<p><a href="https://github.com/clappingmin/rabbitMarket_FE"><img width="180"  src="https://img.shields.io/static/v1?label=Github&message=rabbitMarket_FE&color=61dafb&style=for-the-badge&>"/></a></p>
+
+<p><a href="https://github.com/clappingmin/rabbitMarket_FE"><img width="180"  src="https://img.shields.io/static/v1?label=React&message=FrontEnd Repo&color=61dafb&style=for-the-badge&>"/></a></p>
 
 ### Notion
 
